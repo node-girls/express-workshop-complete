@@ -9,7 +9,6 @@ app.use(express.static('data'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/get-posts', function (req, res) {
-
     res.sendFile(__dirname + '/data/posts.json');
 });
 
@@ -18,10 +17,8 @@ app.post('/create-post', function (req, res) {
     fs.readFile(__dirname + '/data/posts.json', function (error, file) {
 
         var parsedFile = JSON.parse(file);
-        console.log(parsedFile);
         parsedFile[Date.now()] = req.body.blogpost;
         var stringifiedFile = JSON.stringify(parsedFile, null, 4);
-        console.log(stringifiedFile);
         fs.writeFile(__dirname + '/data/posts.json', stringifiedFile, function (error) {
 
             if (error) {
