@@ -3,9 +3,9 @@
 ********************/
 
 body, html, div, label, p, h1, h2, h3, h4, h5, h6, form, a, input, textarea {
-	margin: 0; 
-	padding: 0; 
-	border: 0; 
+	margin: 0;
+	padding: 0;
+	border: 0;
 	outline: none;
 }
 
@@ -15,7 +15,7 @@ body {
 	font-size: 88%;
 	font-family: 'Open Sans', arial, sans-serif;
 	background: #FAFAFA;
-	color: #585858;
+	color: #212121;
 }
 
 div {
@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-size: 100%;
     padding: 23px 0;
 	margin: 0 15px;
-	color: #FF0040;
+	color: #2066E8;
 	letter-spacing: 1px;
 }
 
@@ -51,11 +51,11 @@ main {
 
 
 header {
-	background: #FF0040;
-	background: -webkit-linear-gradient(#F5A9BC, #FF0040);
-	background: -o-linear-gradient(#F5A9BC, #FF0040); 
-	background: -moz-linear-gradient(#F5A9BC, #FF0040);
-	background: linear-gradient(#F5A9BC, #FF0040);
+	background: #2066E8;
+	background: -webkit-linear-gradient(#9DE1FE, #2066E8);
+	background: -o-linear-gradient(#9DE1FE, #2066E8);
+	background: -moz-linear-gradient(#9DE1FE, #2066E8);
+	background: linear-gradient(#9DE1FE, #2066E8);
 }
 
 .title {

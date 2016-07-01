@@ -23,7 +23,7 @@ $(document).ready(function() {
             }
         },
         error: function(error){
-            console.error("ERROR", error);
+            console.error("ERROR from script.js", error);
         }
     });
 });
