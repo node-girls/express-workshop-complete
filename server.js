@@ -7,6 +7,8 @@ var fs = require('fs');
 app.use(express.static('public'));
 app.use(express.static('data'));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('views', './views');
+app.set('view engine', 'pug');
 
 app.get('/get-posts', function (req, res) {
     res.sendFile(__dirname + '/data/posts.json');
@@ -26,6 +28,15 @@ app.post('/create-post', function (req, res) {
             }
             res.redirect('/');
         });
+    });
+});
+
+app.get('/posts/:postId', function (req, res) {
+    var postId = req.params.postId;
+    fs.readFile(__dirname + '/data/posts.json', function (error, file) {
+        var parsedFile = JSON.parse(file);
+        var postContent = parsedFile[postId];
+        res.render('post', { post: postContent });
     });
 });
 
