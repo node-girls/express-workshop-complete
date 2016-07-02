@@ -1,14 +1,17 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var mustacheExpress = require('mustache-express');
+
 var app = express();
 var fs = require('fs');
 
+app.engine('mustache', mustacheExpress());
+app.set('view engine', 'mustache');
+app.set('views', './views');
 
 app.use(express.static('public'));
 app.use(express.static('data'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('views', './views');
-app.set('view engine', 'pug');
 
 app.get('/get-posts', function (req, res) {
     res.sendFile(__dirname + '/data/posts.json');

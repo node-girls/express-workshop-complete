@@ -11,6 +11,6 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "pug": "^2.0.0-beta3"
+    "mustache-express": "^1.2.2"
   }
 }
