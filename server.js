@@ -15,14 +15,13 @@ app.get('/get-posts', function (req, res) {
 app.post('/create-post', function (req, res) {
 
     var blogpost = req.fields.blogpost;
-
     fs.readFile(__dirname + '/data/posts.json', function (error, file) {
 
         var parsedFile = JSON.parse(file);
         parsedFile[Date.now()] = blogpost;
         var stringifiedFile = JSON.stringify(parsedFile, null, 4);
+        
         fs.writeFile(__dirname + '/data/posts.json', stringifiedFile, function (error) {
-
             if (error) {
                 console.error(error);
             }
