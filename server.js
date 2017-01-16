@@ -1,12 +1,12 @@
 var express = require('express');
-var bodyParser = require('body-parser');
-var app = express();
+var formidable = require('express-formidable');
 var fs = require('fs');
 
+var app = express();
 
 app.use(express.static('public'));
 app.use(express.static('data'));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(formidable());
 
 app.get('/get-posts', function (req, res) {
     res.sendFile(__dirname + '/data/posts.json');
@@ -14,10 +14,12 @@ app.get('/get-posts', function (req, res) {
 
 app.post('/create-post', function (req, res) {
 
+    var blogpost = req.fields.blogpost;
+
     fs.readFile(__dirname + '/data/posts.json', function (error, file) {
 
         var parsedFile = JSON.parse(file);
-        parsedFile[Date.now()] = req.body.blogpost;
+        parsedFile[Date.now()] = blogpost;
         var stringifiedFile = JSON.stringify(parsedFile, null, 4);
         fs.writeFile(__dirname + '/data/posts.json', stringifiedFile, function (error) {
 
