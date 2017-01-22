@@ -3,7 +3,6 @@ var formidable = require('express-formidable');
 var fs = require('fs');
 
 var app = express();
-
 app.use(express.static('public'));
 app.use(express.static('data'));
 app.use(formidable());
@@ -20,12 +19,12 @@ app.post('/create-post', function (req, res) {
         var parsedFile = JSON.parse(file);
         parsedFile[Date.now()] = blogpost;
         var stringifiedFile = JSON.stringify(parsedFile, null, 4);
-        
+
         fs.writeFile(__dirname + '/data/posts.json', stringifiedFile, function (error) {
             if (error) {
                 console.error(error);
             }
-            res.redirect('/');
+            res.send({ blogpost: blogpost });
         });
     });
 });
