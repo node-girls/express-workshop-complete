@@ -35,7 +35,9 @@ function postBlogposts (url, data) {
                 document.querySelector('form').reset();
         })
     })
-    .catch(err => console.error(err));
+    .catch(function (err) {
+        console.error(err)
+    });
 }
 
 function getBlogposts (url) {
@@ -49,7 +51,9 @@ function getBlogposts (url) {
             addBlogpostsToPage(json);
         });
     })
-    .catch(err => console.error(err));
+    .catch(function (err) {
+        console.error(err)
+    });
 }
 
 function addBlogpostsToPage (data) {
@@ -59,7 +63,7 @@ function addBlogpostsToPage (data) {
             var postDiv         = document.createElement('div');
             var postText        = document.createElement('p');
             var thumbnail       = document.createElement('img');
-            var postContainer   = document.getElementsByClassName('post-container')[0];
+            var postContainer   = document.querySelector('.post-container');
 
             thumbnail.src = "./img/logo2.png";
             thumbnail.className = "thumbnail";
